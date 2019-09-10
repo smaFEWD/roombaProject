@@ -72,4 +72,7 @@ The program:
 * Run on terminal in the file path of this program: `node read-file.js `
 * Requires: Node.js®, which is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 * Can download Node.js from here: https://nodejs.org/en/
+* Different .txt files are contained in this repo and can be run on this program provided that you update the line of code that requires the file. Update this line of code to show run a different .txt file : `require('fs').readFileSync('input.txt', 'utf-8').split(/\r?\n/).forEach(function(line){
+  arrayofStrings.push(line);
+});`
 
