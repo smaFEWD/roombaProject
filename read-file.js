@@ -1,3 +1,29 @@
+//Ideas on how to get started:
+// Create a drawing and figure out the movement of the roomba to determine if it's straightfoward (roomba is working as planned) or if the roomba is directionally challenged ("does it have a broken comopass")
+// From the input.txt file (not a JS file), get all "text lines" into an array - figure out how to get that into the code? 
+
+// Once the text file is converted to arrays: 
+// If the arrays of data is NOT in integers, need to convert the strings values into integer values so all data is on the same format and can be added / subtracted for roomba to "move"
+
+// Line1:  Dimension - get that into an array of integers - this constrains the roomba
+// Line2: Initial Starting point - get that into an array of integers
+// Line2-second from last line : get all of these patches into an array of arrays (of integers)
+// keep track of how mnany patches exist and how many are cleaned 
+// Last line: Directions given in NESW- parse from on string, to array of strings, to array of integers
+// once all the data converted into "array of integers" format - then you can move the roomba 
+// create one function to run lines 1-second to last line to do the above? 
+
+// Moving the Roomba:
+// create an overall function that moves the roomba, while checking if it is also moving over the patches, and within the constraints of the dimensions, and can determine the final position for reporting
+// - need a function to check constraints of dimensions as roomba moves - can't move past the walls
+// - need a functon to count the number of patches cleaned as roomba moves
+// - need a function to tally up the moves (add/subtract) from initia position of roomba (separate function?)
+// console log the "final position" and how many "patches are cleaned"
+// constraints: make sure to stay within the dimensions and when it hits it wall, don't move
+// constrainst: make sure to not double count when the roomba moves over the same patch (that was once dirty)- keep a boolean counter to convert dirty to clean patch
+// testing with different moving directions? testing with different room dimensions? write unit tests? 
+
+
 
 // declared variables 
 var arrayofStrings = [];
