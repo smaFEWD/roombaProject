@@ -1,12 +1,3 @@
-// var myArgs = process.argv.slice(2);
-// console.log('myArgs: ', myArgs);
-// if(myArgs.length < 1)
-// {
-// 	console.log ("Usage: <script-name> <file-name>");
-// 	console.log ("Exiting.");
-// 	return false;
-// }
-// var filename = myArgs[0];
 
 // declared variables 
 var arrayofStrings = [];
@@ -20,15 +11,6 @@ var nPatchesCleaned = 0;
 require('fs').readFileSync('input.txt', 'utf-8').split(/\r?\n/).forEach(function(line){
   arrayofStrings.push(line);
 });
-
-// check if there is at least three lines of instruction
-// check if the first two lines each have two numbers
-// check if the starting position is inside the dimensions
-// check if the third line -- in case of 3 lines -- is a valid direction set
-// if there are more than 3 lines, that means there are patches
-//	then check if there are two numbers for each patch coordinate
-//	and check if the patches are located inside the grid map -- just like the initial-position-check
-//  this program will only take a input.txt file in the same file path as the read-file.js 
 
 
 // figuring out the dimension given from input.txt file, converting the array of strings to an array of integers
