@@ -1,4 +1,4 @@
-## Introduction to the Roomba Project 
+# Introduction to the Roomba Project 
 
 Directions for this project can be found here: https://gist.github.com/alirussell/2d200d21f117f8d570667daa7acdbae5
 
@@ -38,7 +38,7 @@ Given a an input file with these sample coordinates and data:
 2 3
 NNESEESWNWW
 ```
-# Contraints to the input file: 
+### Contraints to the input file: 
 * The first line(ex: 5 5) holds the room dimensions (X Y), separated by a single space (all coordinates needs to be be presented in this format)
 * The second line holds the hoover position and needs to be within the dimensions of the room. (ex: 1 2)
 * The subsequent lines (examples in lines 3-5) contain the zero or more positions of patches of dirt (one per line), also needs to be within the dimensions of the room. 
