@@ -36,12 +36,14 @@ dimensionStrings = arrayofStrings[0].split(" ");
 var dimensions = [];
 dimensions[0] = parseInt(dimensionStrings[0]);
 dimensions[1] = parseInt(dimensionStrings[1]);
+// console.log("Dimensions are : " + dimensions[0] + "," + dimensions[1]);
 
 // figuring out the initial position given from input.txt file - on the 2nd line, converting the array of strings to an array of integers
 var initialPosStrings = arrayofStrings[1].split(" ");
 var initialPos = [];
 initialPos[0] = parseInt(initialPosStrings[0]);
 initialPos[1] = parseInt(initialPosStrings[1]);
+// console.log("Initial positions are: " + initialPos[0]+ "," +initialPos[1]);
 
 
 // figuring out how many "dirty patches" from the input.txt file, from the 3rd and second to last lines, and converting the patches to an array of integers. 
@@ -54,11 +56,8 @@ for (let i = 2; i < arrayofStrings.length-1; i++){
 };
 
 for(var i = 0; i < arrayOfPatches.length; i++) {
-
     var individualPatchArray = arrayOfPatches[i]
-
     for(var j = 0; j < individualPatchArray.length; j++) {
-
     	individualPatchArray[j] = parseInt(individualPatchArray[j]);
 	}
 };
@@ -139,8 +138,10 @@ function isValidMove(currentPos, move){
 
 };
 
-var nextPos = initialPos
+// need to make it check the last action, this is needed to account for the roomba landing and checking to see if the last patch landed is dirty 
+// we need to now do two checks - determine if roomba has a validMove and also if it has encountered a dirtyPatch, to account for it in our output of this file. 
 
+var nextPos = initialPos
 for (var i = 0; i<=arrayDirectionCoords.length; i++)
 {
 	if (isDirtyPatch(nextPos))
@@ -148,14 +149,15 @@ for (var i = 0; i<=arrayDirectionCoords.length; i++)
 		// console.log("Patch cleaned : " + nextPos)
 		nPatchesCleaned++;
 	};
+	
 	if(i != arrayDirectionCoords.length && isValidMove(nextPos, arrayDirectionCoords[i])){
 		nextPos[0] += arrayDirectionCoords[i][0];
 		nextPos[1] += arrayDirectionCoords[i][1];
 	};
 };
 
+
 console.log(nextPos[0] + " " + nextPos[1]);
 console.log(nPatchesCleaned);
 
-// console.log("Dimensions are : " + dimensions[0] + "," + dimensions[1]);
-// console.log("Initial positions are: " + initialPos[0]+ "," +initialPos[1]);
+
