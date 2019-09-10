@@ -42,7 +42,7 @@ NNESEESWNWW
 * The first line(ex: 5 5) holds the room dimensions (X Y), separated by a single space (all coordinates needs to be be presented in this format)
 * The second line holds the hoover position and needs to be within the dimensions of the room. (ex: 1 2)
 * The subsequent lines (examples in lines 3-5) contain the zero or more positions of patches of dirt (one per line), also needs to be within the dimensions of the room. 
-* The last line in this file always contains the driving instructions (example: NNESEEWWWWEESS) 
+* The last line in this file always contains the driving instructions (example: NNESEESWNWW) 
 
 ## Output
 
