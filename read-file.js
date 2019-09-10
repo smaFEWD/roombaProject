@@ -28,26 +28,27 @@ require('fs').readFileSync('input.txt', 'utf-8').split(/\r?\n/).forEach(function
 // if there are more than 3 lines, that means there are patches
 //	then check if there are two numbers for each patch coordinate
 //	and check if the patches are located inside the grid map -- just like the initial-position-check
+//  this program will only take a input.txt file in the same file path as the read-file.js 
 
 
+// figuring out the dimension given from input.txt file, converting the array of strings to an array of integers
 dimensionStrings = arrayofStrings[0].split(" ");
 var dimensions = [];
 dimensions[0] = parseInt(dimensionStrings[0]);
 dimensions[1] = parseInt(dimensionStrings[1]);
-// console.log(dimensions);
-console.log("Dimensions are : " + dimensions[0] + "," + dimensions[1]);
 
+// figuring out the initial position given from input.txt file - on the 2nd line, converting the array of strings to an array of integers
 var initialPosStrings = arrayofStrings[1].split(" ");
 var initialPos = [];
 initialPos[0] = parseInt(initialPosStrings[0]);
 initialPos[1] = parseInt(initialPosStrings[1]);
-// console.log(initialPos);
-console.log("Initial positions are: " + initialPos[0]+ "," +initialPos[1]);
 
+
+// figuring out how many "dirty patches" from the input.txt file, from the 3rd and second to last lines, and converting the patches to an array of integers. 
 
 for (let i = 2; i < arrayofStrings.length-1; i++){
 	var patchPositions = arrayofStrings[i].split(" ");
-	console.log("This is patch #"+[i-1] + " and dimension are: " + patchPositions[0] + "," + patchPositions[1]);
+	// console.log("This is patch #"+[i-1] + " and dimension are: " + patchPositions[0] + "," + patchPositions[1]);
 	arrayOfPatches.push(patchPositions);
 	cleanedPatches.push(false);
 };
@@ -62,22 +63,26 @@ for(var i = 0; i < arrayOfPatches.length; i++) {
 	}
 };
 
-console.log (arrayOfPatches);
+// console.log (arrayOfPatches);
+
+// taking the given directions, from last line of text seen on input.tx file, converting it to individual strings, then converting them to individual sets of arrays. 
 
 var indexOfdirection = arrayofStrings.length - 1 
 var directions  = arrayofStrings[indexOfdirection].split(" ");
-console.log("Directions are: " + directions);
+// console.log("Directions are: " + directions);
 
 
 totalNumOfPatches = arrayofStrings.length - 3;
-console.log("Total number of patches: " + totalNumOfPatches);
-
+// console.log("Total number of patches: " + totalNumOfPatches);
 
 var lastItem = arrayofStrings[arrayofStrings.length-1];
-console.log(lastItem);
+// console.log(lastItem);
+// converting : NNESEESWNWW to ['N', 'N', 'E', 'S','E', 'E', 'S', 'W','N', 'W', 'W']
 var arrayOfNESW = lastItem.split('');
-console.log(arrayOfNESW);
 
+// console.log(arrayOfNESW);
+
+// creating a coordinate object 
 var coords = {
 	n: [0,1],
 	e: [1,0],
@@ -85,7 +90,8 @@ var coords = {
 	w: [-1,0]
 };
 
-var newSet = arrayOfNESW.map(function(letter){
+// converting ['N', 'N', 'E', 'S','E', 'E', 'S', 'W','N', 'W', 'W'] to [ 0, 1 ],  [ 0, 1 ], [ 1, 0 ],  [ 0, -1 ],[ 1, 0 ], [ 1, 0 ],[ 0, -1 ], [ -1, 0 ],[ 0, 1 ],  [ -1, 0 ], [ -1, 0 ]]
+var arrayDirectionCoords = arrayOfNESW.map(function(letter){
 	if (letter === 'N') {
 		return letter = coords.n;
 	} else if (letter === 'E') {
@@ -97,7 +103,9 @@ var newSet = arrayOfNESW.map(function(letter){
 	}
 });
 
-console.log( newSet);
+// console.log( arrayDirectionCoords);
+
+// creating a function to check if the dirty patch matches the movement of the roomba as it adds or subtracts positions from the initial position. 
 
 function isDirtyPatch(nPos){
 	for (let i=0; i<arrayOfPatches.length; i++){
@@ -112,6 +120,8 @@ function isDirtyPatch(nPos){
 	};
 	return false;
 };
+
+// creating a function to determine if the move is valid. Roomba might be on the wall, so it can't move further (negative)
 
 function isValidMove(currentPos, move){
 		// checking left wall
@@ -131,18 +141,21 @@ function isValidMove(currentPos, move){
 
 var nextPos = initialPos
 
-for (var i = 0; i<=newSet.length; i++)
+for (var i = 0; i<=arrayDirectionCoords.length; i++)
 {
 	if (isDirtyPatch(nextPos))
 	{
-		console.log("Patch cleaned : " + nextPos)
+		// console.log("Patch cleaned : " + nextPos)
 		nPatchesCleaned++;
 	};
-	if(i != newSet.length && isValidMove(nextPos, newSet[i])){
-		nextPos[0] += newSet[i][0];
-		nextPos[1] += newSet[i][1];
+	if(i != arrayDirectionCoords.length && isValidMove(nextPos, arrayDirectionCoords[i])){
+		nextPos[0] += arrayDirectionCoords[i][0];
+		nextPos[1] += arrayDirectionCoords[i][1];
 	};
 };
 
 console.log(nextPos[0] + " " + nextPos[1]);
 console.log(nPatchesCleaned);
+
+// console.log("Dimensions are : " + dimensions[0] + "," + dimensions[1]);
+// console.log("Initial positions are: " + initialPos[0]+ "," +initialPos[1]);
