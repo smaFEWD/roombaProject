@@ -76,7 +76,7 @@ The program:
   arrayofStrings.push(line);
 });`
 
-# Sample Diagram created using data from above initial input file data:
+### Sample Diagram created using data from above initial input file data:
 
 * See: https://drive.google.com/open?id=11LjIN3Pm2Rib-hrhaajN7UkUl_h1MK6-
 * See: https://drive.google.com/open?id=1fLRUqR5ehRH87UIPjjFdfxxm8I4w-8WR
